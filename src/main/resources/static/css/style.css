@@ -1,0 +1,94 @@
+img {
+    float: right;
+    width: 100px;
+}
+html {
+    font-family: Georgia;
+    padding: 10px;
+}
+
+div > * {
+  padding: 10px;
+  margin: 10px;
+}
+
+.errorMsg {
+  color: red;
+}
+
+.navbar {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: rgb(39, 130, 204);
+  text-align: center;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar li a:hover {
+  background-color: rgb(30, 95, 148);
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+td, th {
+  padding: 5px 10px;
+  color: black;
+}
+
+table tr:nth-child(odd){
+  background-color: lightgrey;
+}
+table tr:nth-child(even){
+  background-color: #f8f9fa;
+}
+
+
+input[type=text] {
+  width: 15%;
+  padding: 5px 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+
+  transition: width 0.4s ease-in-out;
+}
+
+textarea {
+  width: 35%;
+  height: 75px;
+  padding: 12px 20px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+
+  transition: width 0.4s ease-in-out;
+}
+
+button {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+a:hover, button:hover {
+  background-color: #333;
+  color:white;
+}

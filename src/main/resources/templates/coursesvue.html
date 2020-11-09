@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout">
+
+<head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Liste des cours</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+
+        <div id="requestCourses">
+
+            <p>Choisissez un cours</p>
+
+            <select v-model="selectedDisplay">
+                <option v-for="course in courses" v-bind:value="course" :key="course.id"> {{ course.id }} </option>
+            </select>
+
+            <div v-if="selectedDisplay">
+                <p> Sigle : {{ selectedDisplay.id }}</p>
+                <p> Titre : {{ selectedDisplay.title }}</p>
+                <p> ECTS : {{ selectedDisplay.credits }}</p>
+            </div>
+        </div>
+
+        <span th:if="${#lists.isEmpty(courses)}">(Aucun cours)</span>
+
+            <h2>Ajouter un cours</h2>
+            
+            <form th:action="@{/courses/add}" th:object="${course}" method="post">
+
+                <label th:for="id">Sigle</label>
+                <input type="text" id="id" th:field="*{id}" th:errorclass="errorField"/>
+                <span th:errors="*{id}" class="errorMsg"></span></br>
+
+                <label th:for="title">Titre</label>
+                <input type="text" id="title" th:field="*{title}" th:errorclass="errorField"/>
+                <span th:errors="*{title}" class="errorMsg"></span></br>
+
+                <label th:for="credits">ECTS</label>
+                <input type="text" id="credits" th:field="*{credits}" th:errorclass="errorField"/>
+                <span th:errors="*{credits}" class="errorMsg"></span></br>
+
+                <button type="submit">Ajouter</button>
+            </form>
+
+        <script src="courses.js"></script>
+    </main>
+</body>
+
+</html>

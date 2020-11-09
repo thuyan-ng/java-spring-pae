@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Cours</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <h2>Etudiants inscrits en <span th:text="${courseId}"></span></h2>
+
+        <div th:replace="fragment/table.html::students"></div>
+
+        <form th:action="@{/course/enroll/{courseId}(courseId=${courseId})}" method="post">
+            <label for="id">Etudiant : </label>
+            <input type="text" id="studentId" name="studentId" th:value="${studentId}"/>
+            <button type="submit">Inscrire</button>
+        </form>
+
+    </main>
+</body>
+
+</html>

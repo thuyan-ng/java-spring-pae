@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout">
+
+<head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Liste des étudiants</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+
+        <h2>Liste des étudiants</h2>
+
+        <form th:action="@{/students/search}" method="post">
+            <label for="entry">Recherche par le prénom</label>
+            <input type=text id="entry" name="entry" />
+            <input type="submit" style="visibility: hidden;" />
+        </form>
+
+        <div th:replace="fragment/table.html::students"></div>
+
+        <h2>Ajouter un étudiant</h2>
+
+        <form th:action="@{/students/add}" th:object="${student}" method="post">
+
+            <label th:for="firstName">Prénom : </label>
+            <input type="text" id="firstName" th:field="*{firstName}" th:errorclass="errorField" />
+            <span th:errors="*{firstName}" class="errorMsg"></span></br>
+
+            <label th:for="lastName">Nom : </label>
+            <input type="text" id="lastName" th:field="*{lastName}" th:errorclass="errorField" />
+            <span th:errors="*{lastName}" class="errorMsg"></span></br>
+
+            Genre :
+            <input type="radio" id="male" name="gender" value="M" checked="checked" />
+            <label for="M">Masculin</label>
+            <input type="radio" id="female" name="gender" value="F" th:field="*{gender}" />
+            <label for="F">Féminin</label></br>
+
+            Section :
+            <input type="radio" id="gestion" name="section" value="G" checked="checked" />
+            <label for="M">Gestion</label>
+            <input type="radio" id="indus" name="section" value="I" />
+            <label for="M">Industriel</label>
+            <input type="radio" id="reseau" name="section" value="R" th:field="*{section}" />
+            <label for="M">Réseau</label></br>
+
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <script src="students.js"></script>
+    </main>
+</body>
+
+</html>

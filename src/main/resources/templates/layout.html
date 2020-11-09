@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+    <nav>
+        <img th:src="@{/image/he2b-esi.png}" />
+        <h1>Programme annuel des étudiants</h1>
+
+        <p>HE2B-ESI/WEBG5/52818/2020-2021</p>
+
+        <ul class="navbar">
+            <li><a class="active" href="/">Accueil</a></li>
+            <li><a class="active" href="/courses">Cours</a></li>
+            <li><a class="active" href="/students">Etudiants</a></li>
+        </ul>
+    </nav>
+
+    <main layout:fragment="content">
+    </main>
+
+</body>
+
+</html>
